@@ -1,0 +1,85 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    overflow-x: hidden;
+}
+.icon-gear {
+    transition: transform 0.4s ease-out;
+}
+.action-btn:hover .icon-gear {
+    transform: rotate(180deg);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.brand-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.brand-text {
+    display: flex;
+    flex-direction: column; 
+    line-height: 1.2;
+}
+.brand-name-nav {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3D5A80;
+}
+
+.brand-subtext-nav {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #8C98A4;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.action-btn {
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #e0e2e5;
+}
+.action-btn:hover .fa-arrows-rotate {
+    transform: rotate(360deg);
+    transition: transform 0.6s linear;
+}
+.action-btn i {
+font-size: 18px;
+color: #5a738e;
+}
+.dashboard-content {
+    padding: 20px;
+}
+
+.dashboard-content h1 {
+    color: #3D5A80;
+    margin-bottom: 15px;
+}
