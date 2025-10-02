@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/img/logitipo-png.png">
     <title>AirShield | Dashboard</title>
-    <link rel="stylesheet" href="static/css/dashboard.css"> 
+    <link rel="stylesheet" href="static/css/dashboard.css"><link rel="stylesheet" href="static/css/style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9e6b36a113.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
+    <div id="pantalla-carga">
+        <img src="static/img/gif/viento.gif" alt="Cargando...">
+    </div>
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="static/img/shield-img.png" alt="AirShield Icon" class="brand-icon">
+            <img src="static/img/shield-remove.png" alt="AirShield Icon" class="brand-icon">
             <div class="brand-text">
                 <span class="brand-name-nav">AirShield</span>
                 <span class="brand-subtext-nav">Dashboard</span>
@@ -27,13 +31,153 @@
         </div>
     </nav>
 
-    <main class="dashboard-content">
-        <h1>Welcome to your Dashboard!</h1>
-        <p>This is where your monitoring data will appear.</p>
-        </main>
-
-</body>
-</html>
+   <main class="dashboard-content">
     
+    <div class="aqi-card">
+        <div class="card-header">
+            <div class="title-section">
+                <h2>Air Quality Index</h2>
+                <p>Real-time monitoring</p>
+            </div>
+            <div class="icon-section">
+                <i class="fa-solid fa-wind"></i>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <span class="aqi-value">42</span>
+            <span class="aqi-status status-good">Good</span>
+        </div>
+
+        <div class="card-footer">
+            <div class="update-info">
+                <span>Last updated</span>
+                <strong>2 min ago</strong>
+            </div>
+        </div>
+    </div>
+    
+    <div class="data-grid">
+
+        <div class="data-card">
+            <div class="card-top">
+                <i class="fa-solid fa-temperature-half icon-temp"></i>
+                <span class="status-dot dot-red"></span>
+            </div>
+            <div class="card-bottom">
+                <span class="data-value">28°C</span>
+                <span class="data-label">Temperature</span>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <div class="card-top">
+                <i class="fa-solid fa-droplet icon-humidity"></i>
+                <span class="status-dot dot-blue"></span>
+            </div>
+            <div class="card-bottom">
+                <span class="data-value">65%</span>
+                <span class="data-label">Humidity</span>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <div class="card-top">
+                <i class="fa-solid fa-gauge-high icon-pressure"></i>
+                <span class="status-dot dot-purple"></span>
+            </div>
+            <div class="card-bottom">
+                <span class="data-value">1013</span>
+                <span class="data-label">Pressure (hPa)</span>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <div class="card-top">
+                <i class="fa-solid fa-wind icon-wind"></i>
+                <span class="status-dot dot-cyan"></span>
+            </div>
+            <div class="card-bottom">
+                <span class="data-value">12</span>
+                <span class="data-label">Wind (km/h)</span>
+            </div>
+        </div>
+
+    </div>
+
+      <div class="details-card">
+        <div class="details-header">
+            <h3>Air Quality Details</h3>
+            <i class="fa-solid fa-circle-info"></i>
+        </div>
+
+        <ul class="pollutant-list">
+            <li>
+                <div class="pollutant-name">
+                    <span class="status-dot dot-green"></span>
+                    <span>PM2.5</span>
+                </div>
+                <div class="pollutant-value">
+                    <span>12</span>
+                    <span class="unit">µg/m³</span>
+                </div>
+            </li>
+            <li>
+                <div class="pollutant-name">
+                    <span class="status-dot dot-orange"></span>
+                    <span>PM10</span>
+                </div>
+                <div class="pollutant-value">
+                    <span>28</span>
+                    <span class="unit">µg/m³</span>
+                </div>
+            </li>
+            <li>
+                <div class="pollutant-name">
+                    <span class="status-dot dot-blue-dark"></span>
+                    <span>NO2</span>
+                </div>
+                <div class="pollutant-value">
+                    <span>18</span>
+                    <span class="unit">ppb</span>
+                </div>
+            </li>
+            <li>
+                <div class="pollutant-name">
+                    <span class="status-dot dot-red"></span>
+                    <span>O3</span>
+                </div>
+                <div class="pollutant-value">
+                    <span>45</span>
+                    <span class="unit">ppb</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+     <div class="recommendations-card">
+        <div class="card-header">
+            <h3>Health Recommendations</h3>
+            <i class="fa-solid fa-shield-plus"></i>
+        </div>
+        <div class="recommendations-body">
+            <div class="recommendation-item good">
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="recommendation-text">
+                    <h4>Air quality is good for outdoor activities</h4>
+                    <p>Perfect conditions for exercise and outdoor sports</p>
+                </div>
+            </div>
+            <div class="recommendation-item warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="recommendation-text">
+                    <h4>Sensitive individuals should limit prolonged outdoor exertion</h4>
+                    <p>People with respiratory conditions should be cautious</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+       <script src="static/js/index.js"></script>
 </body>
 </html>

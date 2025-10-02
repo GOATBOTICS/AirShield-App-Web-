@@ -83,3 +83,297 @@ color: #5a738e;
     color: #3D5A80;
     margin-bottom: 15px;
 }
+
+/* --- Estilos para la Tarjeta de Calidad del Aire (AQI) --- */
+
+.aqi-card {
+    background-color: #3D5A80;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.title-section h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.title-section p {
+    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.icon-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-section i {
+    font-size: 1.2rem;
+    color: #E0FBFC;
+}
+.card-body {
+    line-height: 1; 
+}
+
+.aqi-value {
+    font-size: 4rem;
+    font-weight: 700;
+    display: block;
+}
+
+.aqi-status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 5px;
+    display: block;
+}
+.status-good {
+    color: #A7F0A9;     
+}
+.status-moderate { color: #FFD700; } 
+.status-bad { color: #FF6B6B; }
+.card-footer {
+    text-align: right;
+}
+.update-info span {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+.update-info strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+/* --- Contenedor de la Rejilla de Tarjetas (Grid) --- */
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+/* --- Estilo Individual de las Tarjetas de Datos --- */
+.data-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 120px;
+}
+.data-card .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.data-card .card-top i {
+    font-size: 1.2rem; 
+}
+.icon-temp { color: #E57373; } 
+.icon-humidity { color: #64B5F6; }
+.icon-pressure { color: #9575CD; } 
+.icon-wind { color: #4DD0E1; }
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-red { background-color: #E57373; }
+.dot-blue { background-color: #64B5F6; }
+.dot-purple { background-color: #9575CD; }
+.dot-cyan { background-color: #4DD0E1; }
+
+.data-card .card-bottom {
+    line-height: 1.2;
+}
+
+.data-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.data-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #8C98A4;
+}
+/* --- Estilos para la Tarjeta de Detalles --- */
+
+.details-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f2f5;
+    margin-bottom: 10px;
+}
+
+.details-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.details-header i {
+    font-size: 1.2rem;
+    color: #8C98A4;
+}
+
+/* --- Lista de Contaminantes --- */
+.pollutant-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pollutant-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pollutant-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #555;
+}
+.dot-green { background-color: #27AE60; }
+.dot-orange { background-color: #F39C12; }
+.dot-blue-dark { background-color: #2980B9; }
+
+.pollutant-value {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.pollutant-value .unit {
+    font-weight: 400;
+    color: #8C98A4;
+    margin-left: 5px;
+}
+
+.recommendations-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.recommendations-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.recommendations-card .card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.recommendations-card .card-header i {
+    font-size: 1.2rem;
+    color: #27AE60;
+}
+.recommendations-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recommendation-item {
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left-width: 5px;
+    border-left-style: solid;
+}
+
+.recommendation-item i {
+    font-size: 1.5rem;
+}
+
+.recommendation-text h4 {
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.recommendation-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #8C98A4;
+}
+
+/* --- Colores Específicos por Tipo de Recomendación --- */
+.recommendation-item.good {
+    background-color: #E8F8F5;
+    border-color: #27AE60;
+}
+.recommendation-item.good i {
+    color: #27AE60;
+}
+.recommendation-item.good h4 {
+    color: #1D8348;
+}
+
+.recommendation-item.warning {
+    background-color: #FEF9E7;
+    border-color: #F39C12;
+}
+.recommendation-item.warning i {
+    color: #F39C12;
+}
+.recommendation-item.warning h4 {
+    color: #B9770E;
+}
