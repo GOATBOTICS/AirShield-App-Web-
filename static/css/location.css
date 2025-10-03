@@ -1,0 +1,119 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    background-color: #1e3a9a;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.form-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-card h2 {
+    margin: 0 0 30px 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- Input Fields --- */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    position: absolute;
+    left: 15px;
+    color: #888;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+.input-field i + input {
+    padding-left: 45px;
+}
+
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-confirm {
+    background-color: #1e3a9a;
+}
+
+.btn-logout {
+    background-color: #d9534f;
+}

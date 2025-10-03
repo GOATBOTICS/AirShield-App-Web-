@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Ubicación - AirShield</title>
+    <link rel="stylesheet" href="static/css/location.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+
+    <header class="form-header">
+        <h1>AIRSHIELD</h1>
+    </header>
+
+    <main class="form-container">
+        <div class="form-card">
+            <h2>Selecciona tu ubicación</h2>
+            
+            <form>
+                <div class="input-group">
+                    <label>Selecciona un país</label>
+                    <div class="input-field">
+                        <input type="text" value="MEXICO" readonly>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Selecciona un estado</label>
+                    <div class="input-field">
+                        <i class="fa-solid fa-city"></i>
+                        <input type="text" value="COAHUILA" readonly>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Selecciona una ciudad</label>
+                    <div class="input-field">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input type="text" value="RAMOS ARIZPE" readonly>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-confirm"><a href="dashboard.html" class="btn-start">Confirmar</a></button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
