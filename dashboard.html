@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="static/img/logitipo-png.png">
     <title>AirShield | Dashboard</title>
-    <link rel="stylesheet" href="static/css/dashboard.css"><link rel="stylesheet" href="static/css/style.css"> 
+    <link rel="stylesheet" href="static/css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
@@ -45,18 +45,37 @@
         </div>
 
         <div class="card-body">
-            <span class="aqi-value">42</span>
-            <span class="aqi-status status-good">Good</span>
+            <span class="aqi-value" id="aqi-value">0</span>
+            <span class="aqi-status status-good" id="aqi-status">Good</span>
         </div>
 
         <div class="card-footer">
             <div class="update-info">
                 <span>Last updated</span>
-                <strong>2 min ago</strong>
+                <strong id="last-updated">0 min ago</strong>
             </div>
         </div>
     </div>
-    
+    <div class="aqi-scale">
+        <div class="scale-level level-good">
+            <span>Good</span>
+        </div>
+        <div class="scale-level level-moderate">
+            <span>Moderate</span>
+        </div>
+        <div class="scale-level level-unhealthy-sensitive">
+            <span>Unhealthy for Sensitive</span>
+        </div>
+        <div class="scale-level level-unhealthy">
+            <span>Unhealthy</span>
+        </div>
+        <div class="scale-level level-very-unhealthy">
+            <span>Very Unhealthy</span>
+        </div>
+        <div class="scale-level level-hazardous">
+            <span>Hazardous</span>
+        </div>
+    </div>
     <div class="data-grid">
 
         <div class="data-card">
@@ -65,7 +84,7 @@
                 <span class="status-dot dot-red"></span>
             </div>
             <div class="card-bottom">
-                <span class="data-value">28°C</span>
+                <span class="data-value" id="temp-value">0°C</span>
                 <span class="data-label">Temperature</span>
             </div>
         </div>
@@ -76,7 +95,7 @@
                 <span class="status-dot dot-blue"></span>
             </div>
             <div class="card-bottom">
-                <span class="data-value">65%</span>
+                <span class="data-value" id="humidity-value">0%</span>
                 <span class="data-label">Humidity</span>
             </div>
         </div>
@@ -87,7 +106,7 @@
                 <span class="status-dot dot-purple"></span>
             </div>
             <div class="card-bottom">
-                <span class="data-value">1013</span>
+                <span class="data-value" id="pressure-value">0</span>
                 <span class="data-label">Pressure (hPa)</span>
             </div>
         </div>
@@ -98,86 +117,111 @@
                 <span class="status-dot dot-cyan"></span>
             </div>
             <div class="card-bottom">
-                <span class="data-value">12</span>
-                <span class="data-label">Wind (km/h)</span>
+                <span class="data-value" id="wind-value">0</span>
+                <span class="data-label" id="wind-label">Wind (km/h)</span>
             </div>
         </div>
 
     </div>
 
-      <div class="details-card">
-        <div class="details-header">
-            <h3>Air Quality Details</h3>
-            <i class="fa-solid fa-circle-info"></i>
+        <div class="details-card">
+            <div class="details-header">
+                <h3>Air Quality Details</h3>
+                <i class="fa-solid fa-circle-info" id="info-icon"></i>
+            </div>
+                <ul class="pollutant-list">
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-green"></span>
+                            <span class="pollutant-info" data-tooltip="Fine particles from smoke and exhaust.">PM2.5</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="pm25-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-orange"></span>
+                            <span class="pollutant-info" data-tooltip="Coarse particles like dust and pollen.">PM10</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="pm10-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-blue-dark"></span>
+                            <span class="pollutant-info" data-tooltip="Gas from vehicle and industrial emissions.">NO2</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="no2-value">0</span>
+                            <span class="unit">ppb</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-red"></span>
+                            <span class="pollutant-info" data-tooltip="Ground-level ozone, the main component of smog.">O3</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="o3-value">0</span>
+                            <span class="unit">ppb</span>
+                        </div>
+                    </li>
+                </ul>
         </div>
-
-        <ul class="pollutant-list">
-            <li>
-                <div class="pollutant-name">
-                    <span class="status-dot dot-green"></span>
-                    <span>PM2.5</span>
-                </div>
-                <div class="pollutant-value">
-                    <span>12</span>
-                    <span class="unit">µg/m³</span>
-                </div>
-            </li>
-            <li>
-                <div class="pollutant-name">
-                    <span class="status-dot dot-orange"></span>
-                    <span>PM10</span>
-                </div>
-                <div class="pollutant-value">
-                    <span>28</span>
-                    <span class="unit">µg/m³</span>
-                </div>
-            </li>
-            <li>
-                <div class="pollutant-name">
-                    <span class="status-dot dot-blue-dark"></span>
-                    <span>NO2</span>
-                </div>
-                <div class="pollutant-value">
-                    <span>18</span>
-                    <span class="unit">ppb</span>
-                </div>
-            </li>
-            <li>
-                <div class="pollutant-name">
-                    <span class="status-dot dot-red"></span>
-                    <span>O3</span>
-                </div>
-                <div class="pollutant-value">
-                    <span>45</span>
-                    <span class="unit">ppb</span>
-                </div>
-            </li>
-        </ul>
+        <div class="recommendations-card">
+    <div class="card-header">
+        <h3>Health Recommendations</h3>
+        <i class="fa-solid fa-shield-plus"></i>
     </div>
-     <div class="recommendations-card">
-        <div class="card-header">
-            <h3>Health Recommendations</h3>
-            <i class="fa-solid fa-shield-plus"></i>
-        </div>
-        <div class="recommendations-body">
-            <div class="recommendation-item good">
-                <i class="fa-solid fa-circle-check"></i>
-                <div class="recommendation-text">
-                    <h4>Air quality is good for outdoor activities</h4>
-                    <p>Perfect conditions for exercise and outdoor sports</p>
-                </div>
-            </div>
-            <div class="recommendation-item warning">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <div class="recommendation-text">
-                    <h4>Sensitive individuals should limit prolonged outdoor exertion</h4>
-                    <p>People with respiratory conditions should be cautious</p>
-                </div>
-            </div>
+    <div class="recommendations-body" id="recommendations-body"> 
         </div>
     </div>
     </main>
         <script src="static/js/dashboard.js"></script>
-        <script src="static/js/index.js"></script>
+        <div id="info-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Air Quality Parameters</h2>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>These are the main pollutants measured to determine air quality. Lower values are better.</p>
+                
+                <div class="parameter-info">
+                    <h4>PM2.5 <span class="unit">(Fine Particles)</span></h4>
+                    <p>Tiny particles from smoke and exhaust. They can enter the bloodstream and are a major health concern.</p>
+                    <div class="levels">
+                        <span>Good: 0-12</span>
+                        <span>Moderate: 12-35</span>
+                        <span>Unhealthy: 35+</span>
+                    </div>
+                </div>
+
+                <div class="parameter-info">
+                    <h4>PM10 <span class="unit">(Coarse Particles)</span></h4>
+                    <p>Larger particles like dust and pollen that can irritate the respiratory system.</p>
+                    <div class="levels">
+                        <span>Good: 0-54</span>
+                        <span>Moderate: 54-154</span>
+                        <span>Unhealthy: 154+</span>
+                    </div>
+                </div>
+
+                <div class="parameter-info">
+                    <h4>NO₂ <span class="unit">(Nitrogen Dioxide)</span></h4>
+                    <p>A gas mainly from vehicle traffic. High levels can aggravate respiratory diseases like asthma.</p>
+                </div>
+
+                <div class="parameter-info">
+                    <h4>O₃ <span class="unit">(Ground-Level Ozone)</span></h4>
+                    <p>The main component of smog, created when pollutants react with sunlight. It can reduce lung function.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

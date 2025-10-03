@@ -87,33 +87,23 @@ body, html {
     padding-left: 45px;
 }
 
-.button-group {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
+.btn-start {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 60px; 
+    background-color: #2A4B8D;
     color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;    
+    transition: transform 0.2s ease-out;
+}
+.btn-start:hover {
+    transform: scale(1.05);
     cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-
-.btn:hover {
-    opacity: 0.9;
-}
-
-.btn-confirm {
-    background-color: #1e3a9a;
-}
-
-.btn-logout {
-    background-color: #d9534f;
 }
