@@ -11,24 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiKey = "856e83dea4256d22540d2148df99b880";
     const lat = localStorage.getItem('user_latitude');
     const lon = localStorage.getItem('user_longitude');
-    if (!lat || !lon) {
-        alert('No se ha seleccionado una ubicación. Por favor, elige una primero.');
-        window.location.href = 'location.html';
-        return;
-    }
     const pantallaDeCarga = document.getElementById('pantalla-carga');
     const contenidoPrincipal = document.querySelector('.dashboard-content');
     const infoIcon = document.getElementById('info-icon');
     const infoModal = document.getElementById('info-modal');
     const closeModalBtn = document.getElementById('close-modal');
-    // Elementos del Modal de Detalles Avanzados (NASA)
     const cardTriggers = document.querySelectorAll('#temp-card, #humidity-card, #pressure-card, #wind-card');
     const advancedModal = document.getElementById('advanced-details-modal');
     const closeAdvancedModalBtn = document.getElementById('close-advanced-modal');
     const modalTitle = advancedModal.querySelector('h2');
     const modalContent = document.getElementById('modal-map-content');
-
-
+    const refreshButton = document.getElementById('refresh-btn');
+    const changeLocationButton = document.getElementById('change-location-btn');
+    
+    if (!lat || !lon) {
+        alert('No se ha seleccionado una ubicación. Por favor, elige una primero.');
+        window.location.href = 'location.html';
+        return;
+    }
+     refreshButton.addEventListener('click', () => {
+        location.reload();
+    });
+    changeLocationButton.addEventListener('click', () => {
+        if (confirm('¿Estás seguro de que quieres cambiar tu ubicación? Se borrará la actual.')) {
+            
+            localStorage.removeItem('user_latitude');
+            localStorage.removeItem('user_longitude');
+            window.location.href = 'location.html';
+        }
+    });
     if (contenidoPrincipal) {
         contenidoPrincipal.style.display = 'none';
     }
