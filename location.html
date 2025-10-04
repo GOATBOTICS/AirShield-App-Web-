@@ -11,9 +11,9 @@
 </head>
 <body>
 
-    <header class="form-header">
-        <h1>AIRSHIELD</h1>
-    </header>
+<header class="form-header">
+    <img src="static/img/AirShield-shield-removeg.png" alt="Logo de AirShield"><h1>AirShield</h1>
+</header>
 
 <main class="form-container">
         <div class="form-card">
@@ -25,30 +25,34 @@
                     <input type="text" value="México" readonly>
                 </div>
 
+                <div class="divider"></div>
+
                 <div class="input-field">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <select id="state-select" class="location-select" required>
-                        <option value="" disabled selected>Cargando estados...</option>
+                        <option value="" disabled selected>Selecciona un estado</option>
                     </select>
                 </div>
+
+                <div class="divider"></div>
 
                 <div class="input-field">
                     <i class="fa-solid fa-location-dot"></i>
                     <select id="city-select" class="location-select" disabled required>
-                        <option value="" disabled selected>Elige un estado primero</option>
+                        <option value="" disabled selected>Selecciona una ciudad</option>
                     </select>
                 </div>
 
-                <div class="geolocation-group">
+                 <div class="geolocation-group">
                     <button type="button" id="geolocate-btn" class="btn btn-geolocate">
                         <i class="fa-solid fa-location-crosshairs"></i>
                         Usar mi ubicación actual
                     </button>
                 </div>
-
+                
                 <div class="button-group">
                     <button type="submit" class="btn btn-confirm">Confirmar</button>
-                </div>
+                    </div>
 
             </form>
         </div>

@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- CHEQUEO INICIAL ---
-    // const savedLat = localStorage.getItem('user_latitude');
-    // const savedLon = localStorage.getItem('user_longitude');
-    // if (savedLat && savedLon) {
-    //     window.location.href = 'dashboard.html';
-    //     return;
-    // }
-
-    // --- ELEMENTOS DEL DOM ---
+    const savedLat = localStorage.getItem('user_latitude');
+    const savedLon = localStorage.getItem('user_longitude');
+    if (savedLat && savedLon) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
     const stateSelect = document.getElementById('state-select');
     const citySelect = document.getElementById('city-select');
     const locationForm = document.getElementById('location-form');
     const geolocateBtn = document.getElementById('geolocate-btn');
 
-    // --- RUTAS Y DATOS ---
     const statesURL = 'static/json/states.json';
     const citiesURL = 'static/json/cities.json';
     let mexicoStates = [];

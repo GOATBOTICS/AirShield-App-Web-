@@ -2,26 +2,26 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f2f5;
+    background-color: #f0f4f8; /* Un fondo ligeramente azulado */
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .form-header {
+    /* ... Tus estilos de header no necesitan cambio ... */
     background-color: #1e3a9a;
     color: #FFFFFF;
     text-align: center;
     padding: 15px 0;
     width: 100%;
-    font-weight: 700;
-    letter-spacing: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-header h1 {
-    margin: 0;
-    font-size: 1.5rem;
+.form-header img {
+    height: 80px; width: auto; padding: 5px;
 }
 
 .form-container {
@@ -32,84 +32,139 @@ body, html {
     padding: 20px;
 }
 
+/* ✅ CAMBIO: Tarjeta sin sombra para un diseño plano */
 .form-card {
     background-color: #FFFFFF;
-    border-radius: 10px;
+    border-radius: 20px; /* Bordes un poco más redondeados */
     padding: 30px 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Quitamos la sombra */
     width: 100%;
-    max-width: 400px;
-    text-align: center;
+    max-width: 400px; 
+    text-align: left; /* Alineamos el texto a la izquierda */
 }
 
 .form-card h2 {
     margin: 0 0 30px 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #333;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e3a9a;
+    text-align: center;
 }
 
-/* --- Estilos de los campos de selección --- */
+/* ✅ NUEVO: Estilo para la etiqueta "Selecciona un país" */
+.input-label {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* ✅ NUEVO: Estilo para las líneas divisorias */
+.divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 25px 0;
+}
+
+/* --- Estilos de los campos de selección (REFINADO) --- */
 .input-field {
     position: relative;
-    margin-bottom: 20px;
 }
 
 .input-field i {
     position: absolute;
-    left: 15px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #888;
+    /* ✅ CAMBIO: Íconos azules para selectores activos */
+    color: #1e3a9a; 
     z-index: 1;
 }
 
-.input-field select {
+/* Estilo base para todos los campos */
+.input-field select,
+.input-field input[readonly] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 50px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 12px;
+    outline: none;
+    background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    
-    width: 100%;
-    box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
-    padding: 14px 15px 14px 45px; /* Padding izquierdo para no solapar el ícono */
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    
-    background-color: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    transition: border-color 0.2s ease-in-out;
 }
 
-/* Estilo para el texto del placeholder (opción deshabilitada) */
-.input-field select:required:invalid {
+/* Estilo para los selectores (Estado y Ciudad) */
+.input-field select {
+    /* ✅ CAMBIO: Borde azul por defecto */
+    border: 1px solid #1e3a9a; 
+}
+
+/* Estilo para el campo "México" (readonly) */
+.input-field input[readonly] {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 500;
+}
+/* El ícono del campo readonly debe ser gris */
+.input-field input[readonly] + i {
     color: #888;
 }
 
-/* Estilo para el texto de la opción seleccionada */
-.input-field select option {
-    color: #333;
-}
-
-
-.input-field select:hover {
-    border-color: #aaa;
+/* ✅ CAMBIO: Texto del placeholder azul */
+.input-field select:required:invalid {
+    color: #1e3a9a;
 }
 
 .input-field select:disabled {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-    opacity: 0.8;
+    border-color: #ddd;
+    background-color: #f5f5f5;
+    opacity: 0.7;
+}
+.input-field select:disabled + i {
+    color: #888;
 }
 
-/* --- Grupo de Botones --- */
+/* --- Botones --- */
 .button-group {
     margin-top: 30px;
+}
+
+.btn-confirm {
+    width: 100%;
+    padding: 16px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #FFFFFF;
+    background-color: #1e3a9a;
+}
+
+.btn-confirm:hover {
+    opacity: 0.9;
+}
+
+/* --- Botones (Estilo consistente) --- */
+.geolocation-group {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.button-group {
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espacio entre los botones */
+    gap: 15px;
 }
 
 .btn {
@@ -119,14 +174,22 @@ body, html {
     font-size: 1rem;
     font-weight: 600;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: background-color 0.2s ease;
     color: #FFFFFF;
 }
 
 .btn:hover {
     opacity: 0.9;
+}
+
+.btn-geolocate {
+    background-color: #5cb85c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .btn-confirm {
@@ -135,44 +198,4 @@ body, html {
 
 .btn-logout {
     background-color: #d9534f;
-}
-.input-field input[readonly] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 14px 15px 14px 45px;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e9ecef;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    outline: none;
-    color: #333;
-    cursor: default;
-}
-.geolocation-group {
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
-.btn-geolocate {
-    background-color: #5cb85c;
-    width: 100%;
-    padding: 14px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-.btn-geolocate:hover {
-    opacity: 0.9;
 }
