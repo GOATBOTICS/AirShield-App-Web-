@@ -130,11 +130,11 @@ body, html {
 }
 
 .btn-confirm {
-    background-color: #1e3a9a; /* Azul principal */
+    background-color: #1e3a9a;
 }
 
 .btn-logout {
-    background-color: #d9534f; /* Rojo para cerrar sesión */
+    background-color: #d9534f;
 }
 .input-field input[readonly] {
     width: 100%;
@@ -142,10 +142,37 @@ body, html {
     padding: 14px 15px 14px 45px;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
-    background-color: #e9ecef; /* Un gris claro para indicar que no es editable */
+    background-color: #e9ecef;
     border: 1px solid #ddd;
     border-radius: 8px;
     outline: none;
     color: #333;
     cursor: default;
+}
+.geolocation-group {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.btn-geolocate {
+    background-color: #5cb85c;
+    width: 100%;
+    padding: 14px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.btn-geolocate:hover {
+    opacity: 0.9;
 }

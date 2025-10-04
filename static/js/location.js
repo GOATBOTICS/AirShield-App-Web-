@@ -1,42 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- CHEQUEO INICIAL ---
+    // const savedLat = localStorage.getItem('user_latitude');
+    // const savedLon = localStorage.getItem('user_longitude');
+    // if (savedLat && savedLon) {
+    //     window.location.href = 'dashboard.html';
+    //     return;
+    // }
+
+    // --- ELEMENTOS DEL DOM ---
     const stateSelect = document.getElementById('state-select');
     const citySelect = document.getElementById('city-select');
     const locationForm = document.getElementById('location-form');
+    const geolocateBtn = document.getElementById('geolocate-btn');
 
-    const countriesURL = 'static/json/countries.json';
+    // --- RUTAS Y DATOS ---
     const statesURL = 'static/json/states.json';
     const citiesURL = 'static/json/cities.json';
-
     let mexicoStates = [];
     let allCities = [];
+
     async function initializeLocationData() {
         try {
-            const [countriesRes, statesRes, citiesRes] = await Promise.all([
-                fetch(countriesURL),
+            const [statesRes, citiesRes] = await Promise.all([
                 fetch(statesURL),
                 fetch(citiesURL)
             ]);
-
-            const countries = await countriesRes.json();
-            const states = await statesRes.json();
+            mexicoStates = await statesRes.json();
             allCities = await citiesRes.json();
-
-            const mexico = countries.find(country => country.iso2 === 'MX');
-            if (!mexico) {
-                console.error("No se encontró a México en countries.json");
-                stateSelect.innerHTML = '<option>Error: País no encontrado</option>';
-                return;
-            }
-            mexicoStates = states.filter(state => state.country_id === mexico.id);
             mexicoStates.sort((a, b) => a.name.localeCompare(b.name));
             populateStates();
-
         } catch (error) {
-            console.error('Error al cargar o procesar los archivos JSON:', error);
+            console.error('Error al cargar datos locales:', error);
             stateSelect.innerHTML = '<option>Error al cargar datos</option>';
         }
     }
-
+    
     function populateStates() {
         stateSelect.innerHTML = '<option value="" disabled selected>Selecciona un estado</option>';
         mexicoStates.forEach(state => {
@@ -46,21 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
             stateSelect.appendChild(option);
         });
     }
-    
+
     function loadCities(stateId) {
+        // ... (función sin cambios)
         citySelect.innerHTML = '<option value="" disabled selected>Cargando municipios...</option>';
         citySelect.disabled = true;
-
         const stateCities = allCities.filter(city => city.state_id == stateId);
-        
-        if (stateCities.length === 0) {
-            citySelect.innerHTML = '<option value="">No hay municipios</option>';
-            return;
-        }
-        
-        // Ordenar municipios alfabéticamente
         stateCities.sort((a, b) => a.name.localeCompare(b.name));
-        
         citySelect.innerHTML = '<option value="" disabled selected>Selecciona un municipio</option>';
         stateCities.forEach(city => {
             const option = document.createElement('option');
@@ -71,31 +61,88 @@ document.addEventListener('DOMContentLoaded', () => {
         citySelect.disabled = false;
     }
 
-    // --- EVENTOS ---
-
-    stateSelect.addEventListener('change', () => {
-        const selectedStateId = stateSelect.value;
-        if (selectedStateId) {
-            loadCities(selectedStateId);
+    function handleGeolocate() {
+        if (!navigator.geolocation) {
+            alert('La geolocalización no es soportada por tu navegador.');
+            return;
         }
-    });
+
+        geolocateBtn.disabled = true;
+        geolocateBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Localizando...';
+
+        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+    }
+
+    function geolocationSuccess(position) {
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+
+        const closestCity = findClosestCity(userLat, userLon);
+
+        if (closestCity) {
+            localStorage.setItem('user_latitude', userLat);
+            localStorage.setItem('user_longitude', userLon);
+            
+            const state = mexicoStates.find(s => s.id === closestCity.state_id);
+            alert(`Ubicación encontrada: ${closestCity.name}, ${state.name}. Redirigiendo...`);
+            window.location.href = 'dashboard.html';
+        } else {
+            alert('No se pudo encontrar una ciudad cercana en nuestra base de datos.');
+            resetGeolocateButton();
+        }
+    }
+
+    function geolocationError(error) {
+        alert(`Error al obtener la ubicación: ${error.message}`);
+        resetGeolocateButton();
+    }
+    
+    function getDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
+    function findClosestCity(userLat, userLon) {
+        let closest = null;
+        let minDistance = Infinity;
+
+        allCities.forEach(city => {
+            const distance = getDistance(userLat, userLon, city.latitude, city.longitude);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closest = city;
+            }
+        });
+        return closest;
+    }
+
+    function resetGeolocateButton() {
+        geolocateBtn.disabled = false;
+        geolocateBtn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Usar mi ubicación actual';
+    }
+
+
+    // --- EVENT LISTENERS ---
+    stateSelect.addEventListener('change', () => loadCities(stateSelect.value));
+    geolocateBtn.addEventListener('click', handleGeolocate);
 
     locationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const selectedCityCoords = citySelect.value;
-
         if (!selectedCityCoords || !stateSelect.value) {
             alert("Por favor, selecciona un estado y un municipio.");
             return;
         }
-
         const [latitude, longitude] = selectedCityCoords.split(',');
-
         localStorage.setItem('user_latitude', latitude);
         localStorage.setItem('user_longitude', longitude);
-
-        alert(`Ubicación guardada: ${stateSelect.options[stateSelect.selectedIndex].text}, ${citySelect.options[citySelect.selectedIndex].text}`);
-
+        window.location.href = 'dashboard.html';
     });
 
     // --- INICIO ---

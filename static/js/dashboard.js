@@ -9,8 +9,13 @@ window.onload = function () {
 };
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = "856e83dea4256d22540d2148df99b880";
-    const lat = 25.5393;
-    const lon = -100.9474;
+    const lat = localStorage.getItem('user_latitude');
+    const lon = localStorage.getItem('user_longitude');
+    if (!lat || !lon) {
+        alert('No se ha seleccionado una ubicación. Por favor, elige una primero.');
+        window.location.href = 'location.html';
+        return;
+    }
     const pantallaDeCarga = document.getElementById('pantalla-carga');
     const contenidoPrincipal = document.querySelector('.dashboard-content');
     const infoIcon = document.getElementById('info-icon');
