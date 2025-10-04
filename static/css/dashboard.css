@@ -222,6 +222,12 @@ color: #5a738e;
     flex-direction: column;
     justify-content: space-between; 
     min-height: 120px;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out
+}
+.data-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 .data-card .card-top {
     display: flex;
@@ -513,4 +519,20 @@ color: #5a738e;
 
 #info-icon {
     cursor: pointer;
+}
+/* Estilo para el contenedor de la imagen en el modal */
+.map-placeholder {
+    width: 100%;
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    text-align: center;
+    color: #8C98A4;
+    box-sizing: border-box;
+}
+
+.map-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }

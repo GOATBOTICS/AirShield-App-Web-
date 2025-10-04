@@ -77,19 +77,19 @@
         </div>
     </div>
     <div class="data-grid">
-
-        <div class="data-card">
+        <div class="data-card" id="temp-card" data-param="Temperature">
             <div class="card-top">
                 <i class="fa-solid fa-temperature-half icon-temp"></i>
                 <span class="status-dot dot-red"></span>
             </div>
+
             <div class="card-bottom">
                 <span class="data-value" id="temp-value">0°C</span>
                 <span class="data-label">Temperature</span>
             </div>
         </div>
 
-        <div class="data-card">
+        <div class="data-card" id="humidity-card" data-param="Humidity">
             <div class="card-top">
                 <i class="fa-solid fa-droplet icon-humidity"></i>
                 <span class="status-dot dot-blue"></span>
@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <div class="data-card">
+        <div class="data-card" id="pressure-card" data-param="Pressure">
             <div class="card-top">
                 <i class="fa-solid fa-gauge-high icon-pressure"></i>
                 <span class="status-dot dot-purple"></span>
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div class="data-card">
+        <div class="data-card" id="wind-card" data-param="Wind">
             <div class="card-top">
                 <i class="fa-solid fa-wind icon-wind"></i>
                 <span class="status-dot dot-cyan"></span>
@@ -121,7 +121,6 @@
                 <span class="data-label" id="wind-label">Wind (km/h)</span>
             </div>
         </div>
-
     </div>
 
         <div class="details-card">
@@ -171,7 +170,7 @@
                         </div>
                     </li>
                 </ul>
-        </div>
+            </div>
         <div class="recommendations-card">
     <div class="card-header">
         <h3>Health Recommendations</h3>
@@ -181,47 +180,66 @@
         </div>
     </div>
     </main>
-        <script src="static/js/dashboard.js"></script>
-        <div id="info-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Air Quality Parameters</h2>
-                <button id="close-modal" class="close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>These are the main pollutants measured to determine air quality. Lower values are better.</p>
-                
-                <div class="parameter-info">
-                    <h4>PM2.5 <span class="unit">(Fine Particles)</span></h4>
-                    <p>Tiny particles from smoke and exhaust. They can enter the bloodstream and are a major health concern.</p>
-                    <div class="levels">
-                        <span>Good: 0-12</span>
-                        <span>Moderate: 12-35</span>
-                        <span>Unhealthy: 35+</span>
-                    </div>
-                </div>
+        <div id="advanced-details-modal" class="modal-overlay" style="display: none;">
 
-                <div class="parameter-info">
-                    <h4>PM10 <span class="unit">(Coarse Particles)</span></h4>
-                    <p>Larger particles like dust and pollen that can irritate the respiratory system.</p>
-                    <div class="levels">
-                        <span>Good: 0-54</span>
-                        <span>Moderate: 54-154</span>
-                        <span>Unhealthy: 154+</span>
-                    </div>
-                </div>
-
-                <div class="parameter-info">
-                    <h4>NO₂ <span class="unit">(Nitrogen Dioxide)</span></h4>
-                    <p>A gas mainly from vehicle traffic. High levels can aggravate respiratory diseases like asthma.</p>
-                </div>
-
-                <div class="parameter-info">
-                    <h4>O₃ <span class="unit">(Ground-Level Ozone)</span></h4>
-                    <p>The main component of smog, created when pollutants react with sunlight. It can reduce lung function.</p>
-                </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Advanced Details: NASA TEMPO</h2>
+            <button id="close-advanced-modal" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="map-placeholder" id="modal-map-content">
+                <p>Loading satellite data...</p>
             </div>
         </div>
     </div>
+
+</div>
+
+        <div id="info-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Air Quality Parameters</h2>
+                    <button id="close-modal" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>These are the main pollutants measured to determine air quality. Lower values are better.</p>
+                    
+                    <div class="parameter-info">
+                        <h4>PM2.5 <span class="unit">(Fine Particles)</span></h4>
+                        <p>Tiny particles from smoke and exhaust. They can enter the bloodstream and are a major health concern.</p>
+                        <div class="levels">
+                            <span>Good: 0-12</span>
+                            <span>Moderate: 12-35</span>
+                            <span>Unhealthy: 35+</span>
+                        </div>
+                    </div>
+
+                    <div class="parameter-info">
+                        <h4>PM10 <span class="unit">(Coarse Particles)</span></h4>
+                        <p>Larger particles like dust and pollen that can irritate the respiratory system.</p>
+                        <div class="levels">
+                            <span>Good: 0-54</span>
+                            <span>Moderate: 54-154</span>
+                            <span>Unhealthy: 154+</span>
+                        </div>
+                    </div>
+
+                    <div class="parameter-info">
+                        <h4>NO₂ <span class="unit">(Nitrogen Dioxide)</span></h4>
+                        <p>A gas mainly from vehicle traffic. High levels can aggravate respiratory diseases like asthma.</p>
+                    </div>
+
+                    <div class="parameter-info">
+                        <h4>O₃ <span class="unit">(Ground-Level Ozone)</span></h4>
+                        <p>The main component of smog, created when pollutants react with sunlight. It can reduce lung function.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script src="static/js/dashboard.js"></script>
+
 </body>
 </html>
+

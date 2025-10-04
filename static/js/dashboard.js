@@ -8,7 +8,7 @@ window.onload = function () {
     }, 700);
 };
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = "";
+    const apiKey = "856e83dea4256d22540d2148df99b880";
     const lat = 25.5393;
     const lon = -100.9474;
     const pantallaDeCarga = document.getElementById('pantalla-carga');
@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoIcon = document.getElementById('info-icon');
     const infoModal = document.getElementById('info-modal');
     const closeModalBtn = document.getElementById('close-modal');
+    // Elementos del Modal de Detalles Avanzados (NASA)
+    const cardTriggers = document.querySelectorAll('#temp-card, #humidity-card, #pressure-card, #wind-card');
+    const advancedModal = document.getElementById('advanced-details-modal');
+    const closeAdvancedModalBtn = document.getElementById('close-advanced-modal');
+    const modalTitle = advancedModal.querySelector('h2');
+    const modalContent = document.getElementById('modal-map-content');
+
 
     if (contenidoPrincipal) {
         contenidoPrincipal.style.display = 'none';
@@ -128,7 +135,49 @@ document.addEventListener('DOMContentLoaded', () => {
         getWeatherData();
         getAirQualityData();
     }
+    if (advancedModal && closeModalBtn && cardTriggers.length > 0) {
+        
+        async function openAdvancedModal(title) {
+            modalTitle.innerText = title;
+            modalContent.innerHTML = "<p>Calling local Python server for NASA data...</p>";
+            advancedModal.style.display = 'flex';
 
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/get-nasa-data');
+                
+                if (!response.ok) throw new Error('Server responded with an error!');
+
+                const data = await response.json();
+                
+                // ✨ LÓGICA NUEVA: Comprobar si recibimos una URL de imagen
+                if (data.imageUrl) {
+                    // Si la recibimos, la mostramos en una etiqueta <img>
+                    modalContent.innerHTML = `<img src="${data.imageUrl}" alt="NASA Satellite Data">`;
+                } else {
+                    // Si no, mostramos el error que envió el servidor
+                    modalContent.innerHTML = `<p>Error: ${data.error || 'Image URL not found.'}</p>`;
+                }
+
+            } catch (error) {
+                console.error("Error al obtener datos desde el servidor Python:", error);
+                modalContent.innerHTML = "<p>Error: Could not load data from the server. Is the Python server running?</p>";
+            }
+        }
+
+        cardTriggers.forEach(card => {
+            card.addEventListener('click', () => {
+                const parameter = card.getAttribute('data-param');
+                const dynamicTitle = `Advanced Details: ${parameter}`;
+                openAdvancedModal(dynamicTitle);
+            });
+        });
+
+        const closeAdvancedModal = () => { advancedModal.style.display = 'none'; };
+        closeAdvancedModalBtn.addEventListener('click', closeAdvancedModal);
+        window.addEventListener('click', (event) => {
+            if (event.target == advancedModal) closeAdvancedModal();
+        });
+    }
     updateAllData();
 
     setInterval(updateAllData, 300000);
