@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar Ubicación - AirShield</title>
-    <link rel="stylesheet" href="static/css/location.css">
+    <link rel="stylesheet" href="static/css/location.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
@@ -17,37 +17,37 @@
     <main class="form-container">
         <div class="form-card">
             <h2>Selecciona tu ubicación</h2>
-            
-            <form>
-                <div class="input-group">
-                    <label>Selecciona un país</label>
-                    <div class="input-field">
-                        <input type="text" value="MEXICO" readonly>
-                    </div>
+            <form id="location-form">
+                
+                <div class="input-field">
+                    <i class="fa-solid fa-globe"></i>
+                    <input type="text" value="México" readonly>
                 </div>
 
-                <div class="input-group">
-                    <label>Selecciona un estado</label>
-                    <div class="input-field">
-                        <i class="fa-solid fa-city"></i>
-                        <input type="text" value="COAHUILA" readonly>
-                    </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <select id="state-select" class="location-select" required>
+                        <option value="" disabled selected>Cargando estados...</option>
+                    </select>
                 </div>
 
-                <div class="input-group">
-                    <label>Selecciona una ciudad</label>
-                    <div class="input-field">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <input type="text" value="RAMOS ARIZPE" readonly>
-                    </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <select id="city-select" class="location-select" disabled required>
+                        <option value="" disabled selected>Elige un estado primero</option>
+                    </select>
                 </div>
 
-                <div>
-                    <a href="dashboard.html" class="btn-start">Confirmar</a>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-confirm">Confirmar</button>
+                    <button type="button" class="btn btn-logout">Cerrar sesión</button>
                 </div>
+
             </form>
         </div>
     </main>
+
+    <script src="static/js/location.js"></script>
 
 </body>
 </html>

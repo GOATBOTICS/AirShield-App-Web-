@@ -16,6 +16,7 @@ body, html {
     width: 100%;
     font-weight: 700;
     letter-spacing: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-header h1 {
@@ -48,62 +49,103 @@ body, html {
     color: #333;
 }
 
-/* --- Input Fields --- */
-.input-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
-    color: #888;
-}
-
+/* --- Estilos de los campos de selección --- */
 .input-field {
     position: relative;
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px;
 }
 
 .input-field i {
     position: absolute;
     left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    z-index: 1;
+}
+
+.input-field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    width: 100%;
+    box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
+    padding: 14px 15px 14px 45px; /* Padding izquierdo para no solapar el ícono */
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+/* Estilo para el texto del placeholder (opción deshabilitada) */
+.input-field select:required:invalid {
     color: #888;
 }
 
-.input-field input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-}
-.input-field i + input {
-    padding-left: 45px;
+/* Estilo para el texto de la opción seleccionada */
+.input-field select option {
+    color: #333;
 }
 
-.btn-start {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 60px; 
-    background-color: #2A4B8D;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 1px;    
-    transition: transform 0.2s ease-out;
+
+.input-field select:hover {
+    border-color: #aaa;
 }
-.btn-start:hover {
-    transform: scale(1.05);
+
+.input-field select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* --- Grupo de Botones --- */
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los botones */
+}
+
+.btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: opacity 0.2s ease;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-confirm {
+    background-color: #1e3a9a; /* Azul principal */
+}
+
+.btn-logout {
+    background-color: #d9534f; /* Rojo para cerrar sesión */
+}
+.input-field input[readonly] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px 14px 45px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e9ecef; /* Un gris claro para indicar que no es editable */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    color: #333;
+    cursor: default;
 }
