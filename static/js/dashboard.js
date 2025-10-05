@@ -23,11 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContent = document.getElementById('modal-map-content');
     const refreshButton = document.getElementById('refresh-btn');
     const changeLocationButton = document.getElementById('change-location-btn');
+    const satelliteButton = document.getElementById('view-satellite-btn');
     
     if (!lat || !lon) {
         alert('No se ha seleccionado una ubicación. Por favor, elige una primero.');
         window.location.href = 'location.html';
         return;
+    }
+    if (satelliteButton) {
+        satelliteButton.addEventListener('click', () => {
+            // Redirige al usuario a la nueva página
+            window.location.href = 'satellite-view.html';
+        });
     }
      refreshButton.addEventListener('click', () => {
         location.reload();

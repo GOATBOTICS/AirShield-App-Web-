@@ -58,7 +58,34 @@ body, html {
     font-weight: 600;
     color: #3D5A80;
 }
+.satellite-btn {
+    width: auto;
+    background-color: #2e7bff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.satellite-btn:hover {
+    background-color: #1a6dff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.satellite-btn i {
+    font-size: 1.1rem;
+}
 .brand-subtext-nav {
     font-size: 0.8rem;
     font-weight: 400;
@@ -111,9 +138,11 @@ color: #5a738e;
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    align-items: end;
+    gap: 15px 20px;
 }
 .aqi-scale {
     display: flex; 
@@ -140,9 +169,10 @@ color: #5a738e;
 .level-unhealthy { background-color: #d95243; }
 .level-hazardous { background-color: #A93226; }
 .card-header {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .title-section h2 {
@@ -172,7 +202,10 @@ color: #5a738e;
     color: #E0FBFC;
 }
 .card-body {
-    line-height: 1; 
+    grid-column: 1;
+    align-self: end;
+    line-height: 1;
+    margin-top: 5px;
 }
 
 .aqi-value {
@@ -193,18 +226,13 @@ color: #5a738e;
 .status-moderate { color: #FFD700; } 
 .status-bad { color: #FF6B6B; }
 .card-footer {
-    text-align: right;
+    grid-column: 2;
+    grid-row: 2 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0;
 }
-.update-info span {
-    display: block;
-    font-size: 0.75rem;
-    opacity: 0.8;
-}
-.update-info strong {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-/* --- Contenedor de la Rejilla de Tarjetas (Grid) --- */
 .data-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

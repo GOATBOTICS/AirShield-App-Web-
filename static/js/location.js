@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('user_longitude', userLon);
             
             const state = mexicoStates.find(s => s.id === closestCity.state_id);
-            alert(`Ubicación encontrada: ${closestCity.name}, ${state.name}. Redirigiendo...`);
             window.location.href = 'dashboard.html';
         } else {
             alert('No se pudo encontrar una ciudad cercana en nuestra base de datos.');

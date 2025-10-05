@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirShield | Vista Satelital</title>
+    
+    <link rel="stylesheet" href="static/css/satellite-view.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+
+    <div class="satellite-view-container">
+        
+        <nav class="top-nav">
+            <button class="nav-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="location-selector">
+                <span>[UNSET]</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <button class="nav-btn"><i class="fa-solid fa-arrows-rotate"></i></button>
+        </nav>
+
+        <main class="map-container">
+            <div class="map-placeholder">
+                <p>El mapa se cargaría aquí.</p>
+            </div>
+
+            <div class="map-legend">
+                <span class="legend-item good">Good</span>
+                <span class="legend-item moderate">Moderate</span>
+                <span class="legend-item poor">Poor</span>
+            </div>
+
+            <div class="map-controls">
+                <button class="control-btn settings-btn"><i class="fa-solid fa-gear"></i></button>
+                <div class="fab-group">
+                    <button class="fab-btn"><i class="fa-solid fa-location-crosshairs"></i></button>
+                    <button class="fab-btn"><i class="fa-solid fa-layer-group"></i></button>
+                </div>
+            </div>
+        </main>
+
+        <section class="data-sheet">
+            <div class="sheet-header">
+                <h3>Air Quality Data</h3>
+                <span>Last updated: 2 min ago</span>
+            </div>
+            <div class="data-grid">
+                <div class="data-card">
+                    <span class="data-title">PM2.5</span>
+                    <span class="data-value">12</span>
+                    <span class="data-unit">µg/m³</span>
+                    <span class="status-dot dot-good"></span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title">PM10</span>
+                    <span class="data-value">28</span>
+                    <span class="data-unit">µg/m³</span>
+                    <span class="status-dot dot-moderate"></span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title">O3</span>
+                    <span class="data-value">45</span>
+                    <span class="data-unit">ppb</span>
+                    <span class="status-dot dot-moderate"></span>
+                </div>
+                <div class="data-card">
+                    <span class="data-title">NO2</span>
+                    <span class="data-value">15</span>
+                    <span class="data-unit">ppb</span>
+                    <span class="status-dot dot-good"></span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
