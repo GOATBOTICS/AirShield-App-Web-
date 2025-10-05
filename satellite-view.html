@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="static/img/logitipo-png.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirShield | Vista Satelital</title>
     
@@ -13,34 +14,28 @@
 
     <div class="satellite-view-container">
         
-        <nav class="top-nav">
-            <button class="nav-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <div class="location-selector">
-                <span>[UNSET]</span>
-                <i class="fa-solid fa-chevron-down"></i>
+     <nav class="top-nav">
+            <button class="nav-btn" id="back-to-dashboard-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            
+            <div class="location-selector" data-product="NO2">
+                <span>Mapa NO2</span>
             </div>
-            <button class="nav-btn"><i class="fa-solid fa-arrows-rotate"></i></button>
+            <div class="location-selector" data-product="CLD04">
+                <span>Mapa CLD04</span>
+            </div>
+            <div class="location-selector" data-product="HCHO">
+                <span>Mapa HCHO</span>
+            </div>
+            
+            <button class="nav-btn" id="refresh-map-btn"><i class="fa-solid fa-arrows-rotate"></i></button>
         </nav>
 
         <main class="map-container">
-            <div class="map-placeholder">
-                <p>El mapa se cargaría aquí.</p>
-            </div>
-
-            <div class="map-legend">
-                <span class="legend-item good">Good</span>
-                <span class="legend-item moderate">Moderate</span>
-                <span class="legend-item poor">Poor</span>
-            </div>
-
-            <div class="map-controls">
-                <button class="control-btn settings-btn"><i class="fa-solid fa-gear"></i></button>
-                <div class="fab-group">
-                    <button class="fab-btn"><i class="fa-solid fa-location-crosshairs"></i></button>
-                    <button class="fab-btn"><i class="fa-solid fa-layer-group"></i></button>
-                </div>
+            <div class="map-placeholder" id="map-display">
+                <p>Selecciona un mapa para comenzar.</p>
             </div>
         </main>
+
 
         <section class="data-sheet">
             <div class="sheet-header">
@@ -76,6 +71,7 @@
         </section>
 
     </div>
+    <script src="static/js/satellite-view.js"></script>
 
 </body>
 </html>

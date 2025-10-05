@@ -79,7 +79,6 @@ body, html {
     justify-content: center;
     align-items: center;
     color: var(--text-secondary);
-    background-image: url('https://i.imgur.com/G4n0n9E.jpeg');
     background-size: cover;
     background-position: center;
 }
@@ -99,7 +98,7 @@ body, html {
     z-index: 5;
 }
 .legend-item {
-    color: var(--text-primary); /* Texto oscuro */
+    color: var(--text-primary); 
     font-size: 0.8rem;
     font-weight: 500;
     display: flex;
@@ -124,7 +123,7 @@ body, html {
     z-index: 5;
 }
 .control-btn, .fab-btn {
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff;
     border: 1px solid #e0e0e0;
     color: var(--text-primary);
     border-radius: 12px;
@@ -185,7 +184,7 @@ body, html {
     min-height: 100px;
 }
 .data-title {
-    color: #5a5a8a; /* Color de título más oscuro */
+    color: #5a5a8a; 
     font-weight: 600;
 }
 .data-value {
