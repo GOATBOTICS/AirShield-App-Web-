@@ -17,8 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'location.html';
     return;
     }
-    if (locationNameEl) {
-        locationNameEl.innerText = locationName || 'Default Location';
+    if (locationNameEl && locationName) {
+        locationNameEl.innerText = locationName;
+    } else if (locationNameEl) {
+        locationNameEl.innerText = 'Location not set';
     }
     if (contenidoPrincipal) contenidoPrincipal.style.display = 'none';
     if (pantallaDeCarga && contenidoPrincipal) {
@@ -57,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. FUNCIONES DE LLAMADA A LA API ---
-
     async function getWeatherData() {
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
         try {
@@ -85,24 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateAqiStatus(aqiData.main.aqi);
                 updatePollutantDetails(aqiData.components);
                 updateHealthRecommendations(aqiData.main.aqi);
-                document.getElementById("last-updated").innerText = formatUnixTime(aqiData.dt);
+                lastUpdateTimestamp = aqiData.dt;
+                updateLastUpdatedStatus();
             }
         } catch (error) {
             console.error("Error al obtener datos de calidad del aire:", error);
         }
     }
 
-    // --- 6. FUNCIONES DE AYUDA (HELPERS) ---
-
     function updateAqiStatus(aqi) {
         const statusEl = document.getElementById('aqi-status');
         const aqiValueEl = document.getElementById('aqi-value');
         const statusMap = {
-            1: { text: "Good", class: "status-good" },
-            2: { text: "Fair", class: "status-fair" },
+            1: { text: "Excellent", class: "status-good" },
+            2: { text: "Good", class: "status-fair" },
             3: { text: "Moderate", class: "status-moderate" },
-            4: { text: "Poor", class: "status-poor" },
-            5: { text: "Very Poor", class: "status-very-poor" }
+            4: { text: "Bad", class: "status-poor" },
+            5: { text: "Caution", class: "status-very-poor" }
         };
         const status = statusMap[aqi] || { text: "Unknown", class: "status-unknown" };
         if (aqiValueEl) aqiValueEl.innerText = aqi;
@@ -114,32 +113,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updatePollutantDetails(components) {
         const pollutants = {
-            "pm25-value": components.pm2_5, "pm10-value": components.pm10,
-            "no2-value": components.no2, "o3-value": components.o3
+            "co-value": components.co,
+            "no-value": components.no,
+            "no2-value": components.no2,
+            "o3-value": components.o3,
+            "so2-value": components.so2,
+            "pm25-value": components.pm2_5,
+            "pm10-value": components.pm10,
+            "nh3-value": components.nh3
         };
         for (const [id, value] of Object.entries(pollutants)) {
             const el = document.getElementById(id);
-            if (el) el.innerText = value.toFixed(2);
+            if (el && value !== undefined) {
+                el.innerText = value.toFixed(2);
+            }
         }
     }
 
     function updateHealthRecommendations(aqi) {
-        const container = document.getElementById("recommendations-body");
-        if (!container) return; // Salir si el contenedor no existe
-        let html = "";
-        // ... (Tu switch statement para las recomendaciones va aquí, sin cambios)
-        switch(aqi) {
-            // ... cases ...
-        }
-        container.innerHTML = html;
+    const container = document.getElementById("recommendations-body");
+    // If the container element doesn't exist, the function stops.
+    if (!container) return;
+
+    let html = "";
+    
+    // A switch statement is used to handle each possible AQI value.
+    switch(aqi) {
+        case 1:
+        case 2:
+            html = `
+                <div class="recommendation-item good">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div class="recommendation-text">
+                        <h4>Ideal Air Quality</h4>
+                        <p>It's an excellent day to enjoy outdoor activities.</p>
+                    </div>
+                </div>`;
+            break;
+
+        case 3:
+            html = `
+                <div class="recommendation-item warning">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div class="recommendation-text">
+                        <h4>Caution for Sensitive Groups</h4>
+                        <p>People with asthma or allergies should limit prolonged outdoor exertion.</p>
+                    </div>
+                </div>`;
+            break;
+
+        case 4:
+            html = `
+                <div class="recommendation-item bad">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <div class="recommendation-text">
+                        <h4>Poor Air Quality</h4>
+                        <p>The general public is advised to reduce intense physical activity outdoors.</p>
+                    </div>
+                </div>`;
+            break;
+
+        case 5:
+             html = `
+                <div class="recommendation-item very-bad">
+                    <i class="fa-solid fa-house-chimney-medical"></i>
+                    <div class="recommendation-text">
+                        <h4>High-Risk Air Quality</h4>
+                        <p>Avoid all outdoor activities. Keep doors and windows closed.</p>
+                    </div>
+                </div>`;
+            break;
+
+        default: 
+            html = `<p>No recommendations available.</p>`;
     }
+    
+    container.innerHTML = html;
+}
 
     function formatUnixTime(unix) {
         const date = new Date(unix * 1000);
         return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     }
 
-    // --- 7. EJECUCIÓN Y ACTUALIZACIÓN AUTOMÁTICA ---
     
     function updateAllData() {
         console.log("Actualizando datos...");
@@ -147,6 +203,26 @@ document.addEventListener('DOMContentLoaded', () => {
         getAirQualityData();
     }
 
-    updateAllData(); // Primera ejecución al cargar la página
+    function updateLastUpdatedStatus() {
+        if (!lastUpdateTimestamp) return;
+        const lastUpdatedElement = document.getElementById('last-updated-value');
+        if (!lastUpdatedElement) return;
+        const minutesAgo = Math.round((Date.now() / 1000 - lastUpdateTimestamp) / 60);
+        
+        const timeString = formatUnixTime(lastUpdateTimestamp);
+
+        if (minutesAgo <= 1) {
+            lastUpdatedElement.innerText = `${timeString} (Just now)`;
+        } else {
+            lastUpdatedElement.innerText = `${timeString} (${minutesAgo} min ago)`;
+        }
+        if (!lat || !lon) {
+            alert('No se ha seleccionado una ubicación. Por favor, elige una primero.');
+            window.location.href = 'location.html';
+            return;
+        }
+    }
+
+    updateAllData(); 
     setInterval(updateAllData, 300000); // Actualiza cada 5 minutos
 });

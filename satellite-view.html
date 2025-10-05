@@ -5,20 +5,19 @@
     <link rel="icon" type="image/x-icon" href="static/img/logitipo-png.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirShield | Vista Satelital</title>
-    
     <link rel="stylesheet" href="static/css/satellite-view.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 
     <div class="satellite-view-container">
         
-     <nav class="top-nav">
+       <nav class="top-nav">
             <button class="nav-btn" id="back-to-dashboard-btn"><i class="fa-solid fa-arrow-left"></i></button>
             
             <div class="location-selector" data-product="NO2">
-                <span>Mapa NO2</span>
+                <span>Mapa NO₂</span>
             </div>
             <div class="location-selector" data-product="CLD04">
                 <span>Mapa CLD04</span>
@@ -36,42 +35,34 @@
             </div>
         </main>
 
-
-        <section class="data-sheet">
-            <div class="sheet-header">
-                <h3>Air Quality Data</h3>
-                <span>Last updated: 2 min ago</span>
+        <section class="info-sheet">
+            <div class="info-card">
+                <h3 id="info-card-title">Selecciona un mapa</h3>
+                <p id="info-card-description">Haz clic en uno de los botones de mapa para ver la imagen satelital y su descripción aquí.</p>
+            </div> <br><br>
+        
+        <section class="info-card">
+            <div class="info-card-card">
+                <div class="history-header">
+                    <div class="header-text">
+                        <h4>Histórico por hora</h4>
+                        <span id="selected-date-display">Cargando fecha...</span>
+                    </div>
+                    <input type="date" id="history-date-picker" style="display: none;">
+                    <button id="change-date-btn" class="action-btn">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Cambiar fecha</span>
+                    </button>
+                </div>
+                <ul id="hourly-data-list" class="hourly-list">
+                    <li>Cargando datos...</li>
+                </ul>
             </div>
-            <div class="data-grid">
-                <div class="data-card">
-                    <span class="data-title">PM2.5</span>
-                    <span class="data-value">12</span>
-                    <span class="data-unit">µg/m³</span>
-                    <span class="status-dot dot-good"></span>
-                </div>
-                <div class="data-card">
-                    <span class="data-title">PM10</span>
-                    <span class="data-value">28</span>
-                    <span class="data-unit">µg/m³</span>
-                    <span class="status-dot dot-moderate"></span>
-                </div>
-                <div class="data-card">
-                    <span class="data-title">O3</span>
-                    <span class="data-value">45</span>
-                    <span class="data-unit">ppb</span>
-                    <span class="status-dot dot-moderate"></span>
-                </div>
-                <div class="data-card">
-                    <span class="data-title">NO2</span>
-                    <span class="data-value">15</span>
-                    <span class="data-unit">ppb</span>
-                    <span class="status-dot dot-good"></span>
-                </div>
-            </div>
+        </section>
         </section>
 
     </div>
     <script src="static/js/satellite-view.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>

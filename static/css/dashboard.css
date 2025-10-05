@@ -276,12 +276,14 @@ color: #5a738e;
     height: 8px;
     border-radius: 50%;
 }
-
-.dot-red { background-color: #E57373; }
-.dot-blue { background-color: #64B5F6; }
-.dot-purple { background-color: #9575CD; }
-.dot-cyan { background-color: #4DD0E1; }
-
+.dot-teal { background-color: #16a085; }
+.dot-purple { background-color: #8e44ad; }
+.dot-yellow { background-color: #f1c40f; }
+.dot-brown { background-color: #8d6e63; }
+.dot-green { background-color: #27AE60; }
+.dot-orange { background-color: #f39c12; }
+.dot-blue-dark { background-color: #2980B9; }
+.dot-red { background-color: #c0392b; }
 .data-card .card-bottom {
     line-height: 1.2;
 }
@@ -570,38 +572,70 @@ color: #5a738e;
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
     margin-top: 20px;
 }
 
 .info-card {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    text-align: center;
 }
 
 .info-icon {
     font-size: 1.5rem;
     color: #3D5A80;
 }
-
+.info-icon-top {
+    color: #2980b9;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
 .info-text {
     display: flex;
     flex-direction: column;
 }
 
 .info-label {
+    display: block;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #333;
+    color: #8C98A4;
+    margin-bottom: 5px;
 }
 
 .info-value {
-    font-size: 0.85rem;
-    color: #8C98A4;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+.main-controls {
+    margin-top: 5px;
+    padding: 0 20px;
+}
+.report-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #2980b9; /* Azul principal */
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.report-btn:hover {
+    background-color: #3498db;
 }

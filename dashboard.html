@@ -129,8 +129,58 @@
                 <ul class="pollutant-list">
                     <li>
                         <div class="pollutant-name">
+                            <span class="status-dot dot-teal"></span>
+                            <span class="pollutant-info" data-tooltip="Gas incoloro y tóxico de la combustión incompleta.">CO</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="co-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-purple"></span>
+                            <span class="pollutant-info" data-tooltip="Gas que contribuye a la formación de smog y lluvia ácida.">NO</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="no-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-blue-dark"></span>
+                            <span class="pollutant-info" data-tooltip="Gas de emisiones de vehículos e industriales.">NO2</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="no2-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-orange"></span>
+                            <span class="pollutant-info" data-tooltip="Componente principal del smog a nivel del suelo.">O3</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="o3-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
+                            <span class="status-dot dot-yellow"></span>
+                            <span class="pollutant-info" data-tooltip="Gas irritante proveniente de la quema de combustibles fósiles.">SO2</span>
+                        </div>
+                        <div class="pollutant-value">
+                            <span id="so2-value">0</span>
+                            <span class="unit">µg/m³</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name">
                             <span class="status-dot dot-green"></span>
-                            <span class="pollutant-info" data-tooltip="Fine particles from smoke and exhaust.">PM2.5</span>
+                            <span class="pollutant-info" data-tooltip="Partículas finas de humo y gases de escape.">PM2.5</span>
                         </div>
                         <div class="pollutant-value">
                             <span id="pm25-value">0</span>
@@ -139,8 +189,8 @@
                     </li>
                     <li>
                         <div class="pollutant-name">
-                            <span class="status-dot dot-orange"></span>
-                            <span class="pollutant-info" data-tooltip="Coarse particles like dust and pollen.">PM10</span>
+                            <span class="status-dot dot-brown"></span>
+                            <span class="pollutant-info" data-tooltip="Partículas gruesas como polvo y polen.">PM10</span>
                         </div>
                         <div class="pollutant-value">
                             <span id="pm10-value">0</span>
@@ -149,22 +199,12 @@
                     </li>
                     <li>
                         <div class="pollutant-name">
-                            <span class="status-dot dot-blue-dark"></span>
-                            <span class="pollutant-info" data-tooltip="Gas from vehicle and industrial emissions.">NO2</span>
-                        </div>
-                        <div class="pollutant-value">
-                            <span id="no2-value">0</span>
-                            <span class="unit">ppb</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pollutant-name">
                             <span class="status-dot dot-red"></span>
-                            <span class="pollutant-info" data-tooltip="Ground-level ozone, the main component of smog.">O3</span>
+                            <span class="pollutant-info" data-tooltip="Gas emitido principalmente por actividades agrícolas.">NH3</span>
                         </div>
                         <div class="pollutant-value">
-                            <span id="o3-value">0</span>
-                            <span class="unit">ppb</span>
+                            <span id="nh3-value">0</span>
+                            <span class="unit">µg/m³</span>
                         </div>
                     </li>
                 </ul>
@@ -235,20 +275,23 @@
                 </div>
             </div>
         </div>
-        <div class="info-grid">
-        <div class="info-card">
-                <i class="fa-solid fa-map-pin info-icon"></i>
-                <div class="info-text">
+       <div class="main-controls">
+            <button class="report-btn">
+                <i class="fa-solid fa-file-lines"></i>
+                Generar Reporte
+            </button>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot info-icon-top"></i>
                     <span class="info-label">Location</span>
                     <span class="info-value" id="location-name">Loading...</span>
                 </div>
-            </div>
-            <div class="info-card">
-                <i class="fa-solid fa-clock info-icon"></i>
-                <div class="card-footer">
-                <div class="update-info">
-                    <span>Last updated</span>
-                    <strong id="last-updated">0 min ago</strong> </div>
+                <div class="info-card">
+                    <i class="fa-regular fa-clock info-icon-top"></i>
+                    <span class="info-label">Last updated</span>
+                    <span class="info-value" id="last-updated-value">-</span>
+                </div>
             </div>
         </div>
     </div>

@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const savedLat = localStorage.getItem('user_latitude');
     const savedLon = localStorage.getItem('user_longitude');
-    if (savedLat && savedLon) {
-        window.location.href = 'dashboard.html';
-        return;
-    }
     const stateSelect = document.getElementById('state-select');
     const citySelect = document.getElementById('city-select');
     const locationForm = document.getElementById('location-form');
     const geolocateBtn = document.getElementById('geolocate-btn');
-
     const statesURL = 'static/json/states.json';
     const citiesURL = 'static/json/cities.json';
     let mexicoStates = [];
     let allCities = [];
+
+    if (savedLat && savedLon) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
 
     async function initializeLocationData() {
         try {
@@ -78,8 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (closestCity) {
             localStorage.setItem('user_latitude', userLat);
             localStorage.setItem('user_longitude', userLon);
-            
             const state = mexicoStates.find(s => s.id === closestCity.state_id);
+            const cityName = closestCity.name;
+            const stateName = state ? state.name : 'Ubicación';
+            const locationName = `${cityName}, ${stateName}, México`;
+            localStorage.setItem('user_location_name', locationName);
+
             window.location.href = 'dashboard.html';
         } else {
             alert('No se pudo encontrar una ciudad cercana en nuestra base de datos.');
@@ -122,24 +126,26 @@ document.addEventListener('DOMContentLoaded', () => {
         geolocateBtn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Usar mi ubicación actual';
     }
 
-
-    // --- EVENT LISTENERS ---
     stateSelect.addEventListener('change', () => loadCities(stateSelect.value));
     geolocateBtn.addEventListener('click', handleGeolocate);
 
-    locationForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const selectedCityCoords = citySelect.value;
-        if (!selectedCityCoords || !stateSelect.value) {
-            alert("Por favor, selecciona un estado y un municipio.");
-            return;
-        }
-        const [latitude, longitude] = selectedCityCoords.split(',');
-        localStorage.setItem('user_latitude', latitude);
-        localStorage.setItem('user_longitude', longitude);
-        window.location.href = 'dashboard.html';
-    });
+   locationForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const selectedCityCoords = citySelect.value;
+    if (!selectedCityCoords || !stateSelect.value) {
+        alert("Por favor, selecciona un estado y un municipio.");
+        return;
+    }
+    const [latitude, longitude] = selectedCityCoords.split(',');
+    const cityName = citySelect.options[citySelect.selectedIndex].text;
+    const stateName = stateSelect.options[stateSelect.selectedIndex].text;
+    const locationName = `${cityName}, ${stateName}, México`;
 
-    // --- INICIO ---
+    localStorage.setItem('user_latitude', latitude);
+    localStorage.setItem('user_longitude', longitude);
+    localStorage.setItem('user_location_name', locationName);
+
+    window.location.href = 'dashboard.html';
+});
     initializeLocationData();
 });
