@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/get-nasa-map/${productName}?lat=${lat}&lon=${lon}`);
-        
+const backendUrl = "https://z5n12b4q-5000.usw3.devtunnels.ms";
+const response = await fetch(`${backendUrl}/api/get-nasa-map/${productName}?lat=${lat}&lon=${lon}`);        
         const data = await response.json();
 
         if (!response.ok) {
@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const apiDate = formatDateForAPI(date);
-        const apiUrl = `http://127.0.0.1:5000/api/get-historical-data?lat=${lat}&lon=${lon}&date=${apiDate}`;
+        const backendUrl = "https://z5n12b4q-5000.usw3.devtunnels.ms";
+        const apiUrl = `${backendUrl}/api/get-historical-data?lat=${lat}&lon=${lon}&date=${apiDate}`;
 
         try {
             const response = await fetch(apiUrl);

@@ -121,6 +121,187 @@
         </div>
     </div>
 
+<div class="details-card">
+        <h1 style="justify-content: center; display: flex;">Air quality</h1>
+  <div class="prediction-chart-container">
+    <!-- Eje vertical AQI -->
+    <div class="y-axis">
+      <div class="y-label" style="bottom:0%;">0</div>
+      <div class="y-label" style="bottom:20%;">1</div>
+      <div class="y-label" style="bottom:40%;">2</div>
+      <div class="y-label" style="bottom:60%;">3</div>
+      <div class="y-label" style="bottom:80%;">4</div>
+      <div class="y-label" style="bottom:100%;">5</div>
+    </div>
+
+    <!-- Gráfica -->
+    <div class="chart">
+      <svg viewBox="0 0 600 250" width="100%" height="100%">
+        <!-- Línea continua AQI -->
+        <polyline 
+          fill="none" 
+          stroke="#4caf50" 
+          stroke-width="3" 
+          points="
+            0,200
+            100,160
+            200,180
+            300,110
+            400,140
+            500,170
+            600,130
+          "/>
+        <!-- Puntos AQI -->
+        <circle cx="0" cy="200" r="6" fill="#4caf50"/>
+        <circle cx="100" cy="160" r="6" fill="#4caf50"/>
+        <circle cx="200" cy="180" r="6" fill="#4caf50"/>
+        <circle cx="300" cy="110" r="6" fill="#4caf50"/>
+        <circle cx="400" cy="140" r="6" fill="#4caf50"/>
+        <circle cx="500" cy="170" r="6" fill="#4caf50"/>
+        <circle cx="600" cy="130" r="6" fill="#4caf50"/>
+      </svg>
+
+      <!-- Etiquetas días eje X -->
+      <div class="day" style="left:0%;">6 Oct</div>
+      <div class="day" style="left:20%;">7 Oct</div>
+      <div class="day" style="left:40%;">8 Oct</div>
+      <div class="day" style="left:60%;">9 Oct</div>
+      <div class="day" style="left:80%;">10 Oct</div>
+      <div class="day" style="left:100%;">11 Oct</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.prediction-chart-container {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+}
+
+.y-axis {
+  position: relative;
+  padding-right: 5px;
+}
+
+.y-label {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  transform: translateY(50%);
+}
+
+.chart {
+  width: calc(100% - 40px);
+  height: 100%;
+  position: relative;
+}
+
+/* Etiquetas días eje X */
+.day {
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+</style>
+
+<div class="details-card">
+    <h1 style="justify-content: center; display: flex;">Temperature Prediction</h1>
+  <div class="prediction-chart-container">
+    <!-- Eje vertical -->
+    <div class="y-axis">
+      <div class="y-label" style="bottom:0%;">16°C</div>
+      <div class="y-label" style="bottom:20%;">17°C</div>
+      <div class="y-label" style="bottom:40%;">18°C</div>
+      <div class="y-label" style="bottom:60%;">19°C</div>
+      <div class="y-label" style="bottom:80%;">20°C</div>
+      <div class="y-label" style="bottom:100%;">21°C</div>
+    </div>
+
+    <!-- Gráfica -->
+    <div class="chart">
+      <svg viewBox="0 0 700 250" width="100%" height="100%">
+        <!-- Línea continua -->
+        <polyline 
+          fill="none" 
+          stroke="#ff5722" 
+          stroke-width="3" 
+          points="
+            0,180
+            100,165
+            200,140
+            300,120
+            400,150
+            500,100
+            600,170
+            700,130
+          "/>
+        <!-- Puntos -->
+        <circle cx="0" cy="180" r="6" fill="#ff5722"/>
+        <circle cx="100" cy="165" r="6" fill="#ff5722"/>
+        <circle cx="200" cy="140" r="6" fill="#ff5722"/>
+        <circle cx="300" cy="120" r="6" fill="#ff5722"/>
+        <circle cx="400" cy="150" r="6" fill="#ff5722"/>
+        <circle cx="500" cy="100" r="6" fill="#ff5722"/>
+        <circle cx="600" cy="170" r="6" fill="#ff5722"/>
+        <circle cx="700" cy="130" r="6" fill="#ff5722"/>
+      </svg>
+
+      <!-- Etiquetas días eje X -->
+      <div class="day" style="left:0%;">6 Oct</div>
+      <div class="day" style="left:14.3%;">7 Oct</div>
+      <div class="day" style="left:28.6%;">8 Oct</div>
+      <div class="day" style="left:42.9%;">9 Oct</div>
+      <div class="day" style="left:57.2%;">10 Oct</div>
+      <div class="day" style="left:71.5%;">11 Oct</div>
+      <div class="day" style="left:85.8%;">12 Oct</div>
+      <div class="day" style="left:100%;">13 Oct</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.prediction-chart-container {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  position: relative;
+  display: flex;
+}
+
+.y-axis {
+  position: relative;
+  padding-right: 5px;
+}
+
+.y-label {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  transform: translateY(50%);
+}
+
+.chart {
+  width: calc(100% - 40px);
+  height: 100%;
+  position: relative;
+}
+
+/* Etiquetas días eje X */
+.day {
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+</style>
+
         <div class="details-card">
             <div class="details-header">
                 <h3>Air Quality Details</h3>
@@ -299,6 +480,8 @@
     <br><br><br>
 
 <script src="static/js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 
 </body>
 </html>

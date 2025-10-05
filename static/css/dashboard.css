@@ -639,3 +639,13 @@ color: #5a738e;
 .report-btn:hover {
     background-color: #3498db;
 }
+.prediction-chart-container {
+    width: 100%;      /* ocupa todo el ancho del contenedor padre */
+    max-width: 900px; /* opcional, para que no crezca demasiado en pantallas grandes */
+    height: 400px;    /* altura fija, se puede ajustar */
+    margin: 20px auto; /* centrado horizontal */
+}
+#prediction-chart {
+    width: 100% !important;
+    height: 100% !important;
+}
