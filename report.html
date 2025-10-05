@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/img/logitipo-png.png">
+    <title>AirShield | Reporte</title>
+
+    <link rel="stylesheet" href="static/css/report.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+
+    <div class="report-container">
+        <header class="report-header">
+            <button class="back-btn" onclick="window.history.back()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1>AirShield Report</h1>
+        </header>
+
+        <main class="report-body">
+
+            <section class="logo-section">
+                <img src="static/img/shield-remove.png" alt="AirShield Logo" class="report-logo">
+            </section>
+
+            <section class="data-section">
+                <h2>Recognized data</h2>
+                <ul class="recognized-data-list">
+                    <li>
+                        <span>Generation date:</span>
+                        <span id="report-date">--/--/----</span>
+                    </li>
+                    <li>
+                        <span>Country:</span>
+                        <span id="report-country">...</span>
+                    </li>
+                    <li>
+                        <span>State:</span>
+                        <span id="report-state">...</span>
+                    </li>
+                    <li>
+                        <span>City:</span>
+                        <span id="report-city">...</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="description-section">
+                <h2>Report description</h2>
+                <p>
+                   Air quality and atmospheric conditions report for the selected location. It includes key pollutant levels and the Air Quality Index (AQI), providing reliable information for environmental monitoring, risk assessment, and decision-making.
+                </p>
+            </section>
+
+            <section class="pollutants-section">
+                <h2>Monitored particles</h2>
+                <ul class="pollutant-list">
+                    <li>
+                        <div class="pollutant-name"><span class="dot co"></span>CO</div>
+                        <div class="pollutant-value"><span id="report-co">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot no"></span>NO</div>
+                        <div class="pollutant-value"><span id="report-no">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot no2"></span>NO2</div>
+                        <div class="pollutant-value"><span id="report-no2">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot o3"></span>O3</div>
+                        <div class="pollutant-value"><span id="report-o3">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot so2"></span>SO2</div>
+                        <div class="pollutant-value"><span id="report-so2">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot pm25"></span>PM2.5</div>
+                        <div class="pollutant-value"><span id="report-pm25">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot pm10"></span>PM10</div>
+                        <div class="pollutant-value"><span id="report-pm10">0.00</span> µg/m³</div>
+                    </li>
+                    <li>
+                        <div class="pollutant-name"><span class="dot nh3"></span>NH3</div>
+                        <div class="pollutant-value"><span id="report-nh3">0.00</span> µg/m³</div>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="factors-section">
+                <h2>Important factors</h2>
+                <ul class="factors-list">
+                    <li><span>AQI:</span><span id="report-aqi">...</span></li>
+                    <li><span>Temperature:</span><span id="report-temp">...</span></li>
+                    <li><span>Humidity:</span><span id="report-humidity">...</span></li>
+                    <li><span>Pressure:</span><span id="report-pressure">...</span></li>
+                    <li><span>Wind:</span><span id="report-wind">...</span></li>
+                </ul>
+            </section>
+            
+            <section class="suggestion-section">
+                <h2>Suggestion based on the AQI</h2>
+                <p id="report-suggestion">...</p>
+            </section>
+            
+            <section class="references-section">
+                <h2>References</h2>
+                <ol>
+                    <li>Api Airpollution: <a href="https://openweathermap.org/api/air-pollution" target="_blank">https://openweathermap.org/api/air-pollution</a></li>
+                    <li>EarthData: <a href="https://www.earthdata.nasa.gov/data/tools" target="_blank">https://www.earthdata.nasa.gov/data/tools</a></li>
+                    <li>PDF TEMPO: <a href="https://asdc.larc.nasa.gov/documents/tempo/guide/TEMPO_Level-2-3_trace_gas_clouds_user_guide_V2.0.pdf" target="_blank">https://asdc.larc.nasa.gov/...</a></li>
+                </ol>
+            </section>
+        </main>
+    </div>
+    <script src="static/js/report.js"></script> 
+
+    </body>
+</html>

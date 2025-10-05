@@ -1,0 +1,153 @@
+/* static/css/report.css */
+
+/* --- Estilos Generales --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.report-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+/* --- Cabecera --- */
+.report-header {
+    background-color: #2980b9;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.report-header .back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.report-header h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* --- Cuerpo del Reporte --- */
+.report-body {
+    padding: 25px;
+}
+
+section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 25px;
+}
+
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+}
+
+/* --- Secciones específicas --- */
+.logo-section {
+    text-align: center;
+}
+.report-logo {
+    width: 80px;
+    height: auto;
+}
+
+.recognized-data-list, .factors-list {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95rem;
+}
+.recognized-data-list li, .factors-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+.recognized-data-list span:first-child, .factors-list span:first-child {
+    font-weight: 500;
+    color: #555;
+}
+.recognized-data-list span:last-child, .factors-list span:last-child {
+    font-weight: 600;
+}
+
+.description-section p, .suggestion-section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* --- Lista de Contaminantes (similar a dashboard.css) --- */
+.pollutant-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.pollutant-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pollutant-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+.pollutant-value {
+    font-weight: 600;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.co    { background-color: #1abc9c; }
+.dot.no    { background-color: #9b59b6; }
+.dot.no2   { background-color: #3498db; }
+.dot.o3    { background-color: #f39c12; }
+.dot.so2   { background-color: #f1c40f; }
+.dot.pm25  { background-color: #2ecc71; }
+.dot.pm10  { background-color: #8d6e63; }
+.dot.nh3   { background-color: #e74c3c; }
+
+
+/* --- Referencias --- */
+.references-section ol {
+    padding-left: 20px;
+}
+.references-section li {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+}
+.references-section a {
+    color: #2980b9;
+    text-decoration: none;
+    word-break: break-all;
+}
+.references-section a:hover {
+    text-decoration: underline;
+}
